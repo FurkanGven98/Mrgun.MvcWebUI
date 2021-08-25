@@ -1,0 +1,71 @@
+﻿@model Mrgun.MvcWebUI.Models.ShippingDetails
+@{
+    ViewBag.Title = "Checkout";
+}
+<style>
+    .field-validation-error { color: #f00;}
+    .field-validation-valid { display: none;}
+    .input-validation-error { border: 1px solid #f00; background-color: #fee;}
+    .validation-summary-errors { font-weight: bold;color: #f00;}
+    .validation-summary-valid { display: none;}
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş Bilgileriniz</h2>
+            <p>Lütfen adres bilginizi doldurunuz</p>
+            <hr />
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label"></label>
+                    <span class="badge-danger">
+                        @User.Identity.Name
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Adres Tanımı</label>
+                    @Html.TextBoxFor(x => x.AdresBasligi, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Adres</label>
+                    @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Şehir</label>
+                    @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">İlçe</label>
+                    @Html.TextBoxFor(x => x.Ilce, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Mahalle</label>
+                    @Html.TextBoxFor(x => x.Mahalle, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Posta Kodu</label>
+                    @Html.TextBoxFor(x => x.PostaKodu, new { @class = "form-control" })
+                </div>
+
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

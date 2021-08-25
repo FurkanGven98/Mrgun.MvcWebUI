@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Mrgun.MvcWebUI.Entity.Category>
+@{
+    var selectedCategory = Url.RequestContext.RouteData.Values["id"];
+}
+<div class="list-group">
+    <div class="list-group-item">
+        <a href="/Home/List">
+            Tüm kategoriler
+        </a>
+    </div>
+    @foreach (var item in Model)
+    {
+        if (selectedCategory != null)
+        {
+            if (item.Id == int.Parse(selectedCategory.ToString()))
+            {
+                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                    <a href="/Home/List/@item.Id">
+                        //iKON EKLE
+                        @item.Name
+                    </a>
+                </button>
+            }
+            else
+            {
+                <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                    <a href="/Home/List/@item.Id">
+                        //iKON EKLE
+                        @item.Name
+                    </a>
+                </button>
+            }
+            
+        }
+        else
+        {
+            <button type="button" class="list-group-item list-group-item-action" aria-current="true">
+                <a href="/Home/List/@item.Id">
+                    //iKON EKLE
+                    @item.Name
+                </a>
+            </button>
+        }
+       
+    }
+</div>
